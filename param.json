@@ -1,0 +1,88 @@
+//AppService
+
+"$schema": "",
+"contentVersion": "1.0.0.0",
+"parameters": {
+    "webAppName": {
+        "value": "uniqueString(resourceGroup().id)"
+    }
+
+    "sku": {
+        "value": "F1"
+    }
+
+    "linuxFxVersion":{
+        "value": "node|14-lts"
+    }
+
+    "location":{
+        "value": "resourceGroup().location"
+    }
+
+    "repositoryUrl": {
+        "value": "https://github.com/Azure-Samples/nodejs-docs-hello-world"
+    }
+
+    "branch": {
+        "value" : "master"
+    }
+}
+
+
+
+
+//cosmosdb
+
+@description('Cosmos DB account name')
+param accountName string = 'cosmos-${uniqueString(resourceGroup().id)}'
+
+@description('Location for the Cosmos DB account.')
+param location string = resourceGroup().location
+
+@description('The name for the SQL API database')
+param databaseName string
+
+@description('The name for the SQL API container')
+param containerName string
+
+//function
+
+@description('The name of the function app that you wish to create.')
+param appName string = 'fnapp${uniqueString(resourceGroup().id)}'
+
+@description('Storage Account type')
+
+param storageAccountType string = 'Standard_LRS'
+
+@description('Location for all resources.')
+param location string = resourceGroup().location
+
+@description('Location for Application Insights')
+param appInsightsLocation string
+
+@description('The language worker runtime to load in the function app.')
+
+param runtime string = 'node'
+
+//StaticApp
+
+@description('VNet name')
+param vnetName string = 'VNet1'
+
+@description('Address prefix')
+param vnetAddressPrefix string = '10.0.0.0/16'
+
+@description('Subnet 1 Prefix')
+param subnet1Prefix string = '10.0.0.0/24'
+
+@description('Subnet 1 Name')
+param subnet1Name string = 'Subnet1'
+
+@description('Subnet 2 Prefix')
+param subnet2Prefix string = '10.0.1.0/24'
+
+@description('Subnet 2 Name')
+param subnet2Name string = 'Subnet2'
+
+@description('Location for all resources.')
+param location string = resourceGroup().location
